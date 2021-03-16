@@ -1,0 +1,7 @@
+# Delphi history and backups
+__history/
+__recovery/
+
+fontes/*.~*
+fontes/*.dcu
+*.exe

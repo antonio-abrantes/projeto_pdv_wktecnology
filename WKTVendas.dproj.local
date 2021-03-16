@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2020/11/28 15:21:09.000.538,=C:\Users\Antonio\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2020/11/28 15:29:18.000.424,=C:\Users\Antonio\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2020/11/28 15:45:45.000.386,=C:\Users\Antonio\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2020/11/29 00:17:18.000.906,=C:\Users\Antonio\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2020/11/29 00:17:44.000.484,=C:\Users\Antonio\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2021/03/15 21:26:05.000.707,=C:\Users\Antonio\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
+    <Transaction>2021/03/15 21:27:48.000.396,C:\Users\Antonio\Documents\Embarcadero\Studio\Projects\Unit1.pas=E:\Projetos\WKTecnology_Vendas\fontes\UPrincipal.pas</Transaction>
+    <Transaction>2021/03/15 21:27:48.000.396,C:\Users\Antonio\Documents\Embarcadero\Studio\Projects\Unit1.dfm=E:\Projetos\WKTecnology_Vendas\fontes\UPrincipal.dfm</Transaction>
+    <Transaction>2021/03/15 21:28:21.000.976,C:\Users\Antonio\Documents\Embarcadero\Studio\Projects\Project1.dproj=E:\Projetos\WKTecnology_Vendas\WKTVendas.dproj</Transaction>
+  </Transactions>
+	<ActiveMobileDevice>
+		<NoProfile iOSSimulator="iPhone5"/>
+	</ActiveMobileDevice>
+</BorlandProject>
