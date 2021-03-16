@@ -450,6 +450,7 @@ object frmPrincipal: TfrmPrincipal
     Top = 415
     Width = 161
     Height = 41
+    Cursor = crHandPoint
     Caption = 'ADICONAR'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = 14774528
@@ -681,7 +682,7 @@ object frmPrincipal: TfrmPrincipal
     Top = 288
     Width = 591
     Height = 372
-    TabOrder = 0
+    TabOrder = 6
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText
     TitleFont.Height = -11
@@ -690,7 +691,7 @@ object frmPrincipal: TfrmPrincipal
   end
   object Edit1: TEdit
     Left = 48
-    Top = 115
+    Top = 114
     Width = 217
     Height = 22
     BorderStyle = bsNone
@@ -700,7 +701,7 @@ object frmPrincipal: TfrmPrincipal
     Font.Name = 'Tahoma'
     Font.Style = []
     ParentFont = False
-    TabOrder = 1
+    TabOrder = 0
     TextHint = 'C'#243'digo cliente'
   end
   object Edit2: TEdit
@@ -715,7 +716,7 @@ object frmPrincipal: TfrmPrincipal
     Font.Name = 'Tahoma'
     Font.Style = []
     ParentFont = False
-    TabOrder = 2
+    TabOrder = 1
     TextHint = 'Nome'
   end
   object Edit3: TEdit
@@ -730,7 +731,7 @@ object frmPrincipal: TfrmPrincipal
     Font.Name = 'Tahoma'
     Font.Style = []
     ParentFont = False
-    TabOrder = 3
+    TabOrder = 2
     TextHint = 'C'#243'digo produto'
   end
   object SpinEdit1: TSpinEdit
@@ -746,7 +747,7 @@ object frmPrincipal: TfrmPrincipal
     MaxValue = 0
     MinValue = 0
     ParentFont = False
-    TabOrder = 4
+    TabOrder = 3
     Value = 0
   end
   object Edit4: TEdit
@@ -761,7 +762,7 @@ object frmPrincipal: TfrmPrincipal
     Font.Name = 'Tahoma'
     Font.Style = []
     ParentFont = False
-    TabOrder = 5
+    TabOrder = 4
   end
   object Edit5: TEdit
     Left = 48
@@ -775,6 +776,6 @@ object frmPrincipal: TfrmPrincipal
     Font.Name = 'Tahoma'
     Font.Style = []
     ParentFont = False
-    TabOrder = 6
+    TabOrder = 5
   end
 end
