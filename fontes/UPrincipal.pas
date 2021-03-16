@@ -5,14 +5,15 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.Buttons, Vcl.StdCtrls,
-  System.ImageList, Vcl.ImgList;
+  System.ImageList, Vcl.ImgList, Data.DB, Vcl.Grids, Vcl.DBGrids,
+  Vcl.Samples.Spin;
 
 type
   TfrmPrincipal = class(TForm)
     Shape1: TShape;
-    SpeedButton1: TSpeedButton;
-    SpeedButton2: TSpeedButton;
-    SpeedButton3: TSpeedButton;
+    btnIniciarVenda: TSpeedButton;
+    btnFinalizarVenda: TSpeedButton;
+    btnCancelarVenda: TSpeedButton;
     Shape2: TShape;
     Label1: TLabel;
     Label2: TLabel;
@@ -27,7 +28,7 @@ type
     Shape9: TShape;
     Label5: TLabel;
     Label6: TLabel;
-    SpeedButton4: TSpeedButton;
+    btnAdicionarProduto: TSpeedButton;
     Shape11: TShape;
     Shape12: TShape;
     Label7: TLabel;
@@ -38,6 +39,15 @@ type
     Label11: TLabel;
     Shape13: TShape;
     Label12: TLabel;
+    grdVendas: TDBGrid;
+    Edit1: TEdit;
+    Edit2: TEdit;
+    Edit3: TEdit;
+    SpinEdit1: TSpinEdit;
+    Edit4: TEdit;
+    Edit5: TEdit;
+    Shape14: TShape;
+    lbStatusCaixa: TLabel;
   private
     { Private declarations }
   public

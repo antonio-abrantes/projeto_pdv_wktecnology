@@ -25,7 +25,7 @@ object frmPrincipal: TfrmPrincipal
     ExplicitLeft = 8
     ExplicitTop = 144
   end
-  object SpeedButton1: TSpeedButton
+  object btnIniciarVenda: TSpeedButton
     Left = 213
     Top = 8
     Width = 201
@@ -118,7 +118,7 @@ object frmPrincipal: TfrmPrincipal
       FDFDFDFDFDFDFDFDFDFD}
     ParentFont = False
   end
-  object SpeedButton2: TSpeedButton
+  object btnFinalizarVenda: TSpeedButton
     Left = 880
     Top = 756
     Width = 201
@@ -210,7 +210,7 @@ object frmPrincipal: TfrmPrincipal
       CBCBCBCBCBCBCBCBCBCB}
     ParentFont = False
   end
-  object SpeedButton3: TSpeedButton
+  object btnCancelarVenda: TSpeedButton
     Left = 725
     Top = 8
     Width = 201
@@ -445,7 +445,7 @@ object frmPrincipal: TfrmPrincipal
     Font.Style = []
     ParentFont = False
   end
-  object SpeedButton4: TSpeedButton
+  object btnAdicionarProduto: TSpeedButton
     Left = 272
     Top = 415
     Width = 161
@@ -613,15 +613,15 @@ object frmPrincipal: TfrmPrincipal
     ParentFont = False
   end
   object Label11: TLabel
-    Left = 496
-    Top = 176
-    Width = 100
-    Height = 35
+    Left = 494
+    Top = 168
+    Width = 137
+    Height = 48
     Alignment = taCenter
     Caption = 'Produto'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWhite
-    Font.Height = -29
+    Font.Height = -40
     Font.Name = 'Tahoma'
     Font.Style = []
     ParentFont = False
@@ -636,17 +636,145 @@ object frmPrincipal: TfrmPrincipal
     Shape = stRoundRect
   end
   object Label12: TLabel
-    Left = 560
-    Top = 697
-    Width = 503
-    Height = 35
+    Left = 496
+    Top = 693
+    Width = 567
+    Height = 48
     Alignment = taRightJustify
     Caption = '0,00'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWhite
-    Font.Height = -29
+    Font.Height = -40
     Font.Name = 'Tahoma'
     Font.Style = []
     ParentFont = False
+  end
+  object Shape14: TShape
+    Left = 40
+    Top = 659
+    Width = 393
+    Height = 91
+    Brush.Color = 56576
+    Pen.Color = clWhite
+    Shape = stRoundRect
+  end
+  object lbStatusCaixa: TLabel
+    Left = 40
+    Top = 680
+    Width = 393
+    Height = 54
+    Alignment = taCenter
+    AutoSize = False
+    Caption = 'LIVRE'
+    Color = clInfoBk
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clWhite
+    Font.Height = -48
+    Font.Name = 'Arno Pro Caption'
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+    Transparent = True
+  end
+  object grdVendas: TDBGrid
+    Left = 479
+    Top = 288
+    Width = 591
+    Height = 372
+    TabOrder = 0
+    TitleFont.Charset = DEFAULT_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -11
+    TitleFont.Name = 'Tahoma'
+    TitleFont.Style = []
+  end
+  object Edit1: TEdit
+    Left = 48
+    Top = 115
+    Width = 217
+    Height = 22
+    BorderStyle = bsNone
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -16
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 1
+    TextHint = 'C'#243'digo cliente'
+  end
+  object Edit2: TEdit
+    Left = 312
+    Top = 114
+    Width = 751
+    Height = 23
+    BorderStyle = bsNone
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -16
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 2
+    TextHint = 'Nome'
+  end
+  object Edit3: TEdit
+    Left = 50
+    Top = 284
+    Width = 375
+    Height = 22
+    BorderStyle = bsNone
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -16
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 3
+    TextHint = 'C'#243'digo produto'
+  end
+  object SpinEdit1: TSpinEdit
+    Left = 50
+    Top = 351
+    Width = 159
+    Height = 29
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -16
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    MaxValue = 0
+    MinValue = 0
+    ParentFont = False
+    TabOrder = 4
+    Value = 0
+  end
+  object Edit4: TEdit
+    Left = 265
+    Top = 356
+    Width = 160
+    Height = 23
+    BorderStyle = bsNone
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -16
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 5
+  end
+  object Edit5: TEdit
+    Left = 48
+    Top = 428
+    Width = 174
+    Height = 22
+    BorderStyle = bsNone
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -16
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 6
   end
 end
