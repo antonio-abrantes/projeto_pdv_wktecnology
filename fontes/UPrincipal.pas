@@ -6,7 +6,7 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.Buttons, Vcl.StdCtrls,
   System.ImageList, Vcl.ImgList, Data.DB, Vcl.Grids, Vcl.DBGrids,
-  Vcl.Samples.Spin;
+  Vcl.Samples.Spin, Datasnap.DBClient;
 
 type
   TfrmPrincipal = class(TForm)
@@ -39,7 +39,6 @@ type
     Label11: TLabel;
     Shape13: TShape;
     Label12: TLabel;
-    grdVendas: TDBGrid;
     Edit1: TEdit;
     Edit2: TEdit;
     Edit3: TEdit;
@@ -48,6 +47,17 @@ type
     Edit5: TEdit;
     Shape14: TShape;
     lbStatusCaixa: TLabel;
+    cdsitensVendas: TClientDataSet;
+    cdsitensVendascod: TIntegerField;
+    cdsitensVendasdescricao: TStringField;
+    cdsitensVendasqtd: TCurrencyField;
+    cdsitensVendasvl_item: TCurrencyField;
+    cdsitensVendasTotal_Item: TCurrencyField;
+    cdsitensVendascodBarra: TStringField;
+    cdsitensVendasvl_unitario: TCurrencyField;
+    cdsitensVendasTotal: TAggregateField;
+    cds_itensVendas: TDataSource;
+    grdVendas: TDBGrid;
   private
     { Private declarations }
   public

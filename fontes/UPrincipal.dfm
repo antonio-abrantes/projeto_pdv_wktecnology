@@ -677,18 +677,6 @@ object frmPrincipal: TfrmPrincipal
     ParentFont = False
     Transparent = True
   end
-  object grdVendas: TDBGrid
-    Left = 479
-    Top = 288
-    Width = 591
-    Height = 372
-    TabOrder = 6
-    TitleFont.Charset = DEFAULT_CHARSET
-    TitleFont.Color = clWindowText
-    TitleFont.Height = -11
-    TitleFont.Name = 'Tahoma'
-    TitleFont.Style = []
-  end
   object Edit1: TEdit
     Left = 48
     Top = 114
@@ -777,5 +765,150 @@ object frmPrincipal: TfrmPrincipal
     Font.Style = []
     ParentFont = False
     TabOrder = 5
+  end
+  object grdVendas: TDBGrid
+    Left = 477
+    Top = 288
+    Width = 596
+    Height = 374
+    Ctl3D = True
+    DataSource = cds_itensVendas
+    FixedColor = clWindow
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clBlack
+    Font.Height = -13
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    Options = [dgTitles, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit]
+    ParentCtl3D = False
+    ParentFont = False
+    ReadOnly = True
+    TabOrder = 6
+    TitleFont.Charset = ANSI_CHARSET
+    TitleFont.Color = clBlack
+    TitleFont.Height = -13
+    TitleFont.Name = 'Tahoma'
+    TitleFont.Style = [fsBold]
+    Columns = <
+      item
+        Alignment = taLeftJustify
+        Expanded = False
+        FieldName = 'cod'
+        Title.Caption = 'C'#211'D.'
+        Title.Color = cl3DLight
+        Title.Font.Charset = ANSI_CHARSET
+        Title.Font.Color = clWindowText
+        Title.Font.Height = -11
+        Title.Font.Name = 'Tahoma'
+        Title.Font.Style = [fsBold]
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'descricao'
+        Title.Caption = 'PRODUTO'
+        Title.Color = cl3DLight
+        Title.Font.Charset = ANSI_CHARSET
+        Title.Font.Color = clWindowText
+        Title.Font.Height = -11
+        Title.Font.Name = 'Tahoma'
+        Title.Font.Style = [fsBold]
+        Width = 247
+        Visible = True
+      end
+      item
+        Alignment = taCenter
+        Expanded = False
+        FieldName = 'qtd'
+        PickList.Strings = (
+          '')
+        Title.Alignment = taCenter
+        Title.Caption = 'QTD.'
+        Title.Color = cl3DLight
+        Title.Font.Charset = ANSI_CHARSET
+        Title.Font.Color = clWindowText
+        Title.Font.Height = -11
+        Title.Font.Name = 'Tahoma'
+        Title.Font.Style = [fsBold]
+        Width = 45
+        Visible = True
+      end
+      item
+        Alignment = taCenter
+        Color = clMenu
+        Expanded = False
+        FieldName = 'vl_item'
+        Title.Alignment = taCenter
+        Title.Caption = 'R$'
+        Title.Color = cl3DLight
+        Title.Font.Charset = ANSI_CHARSET
+        Title.Font.Color = clWindowText
+        Title.Font.Height = -11
+        Title.Font.Name = 'Tahoma'
+        Title.Font.Style = [fsBold]
+        Width = 85
+        Visible = True
+      end
+      item
+        Alignment = taCenter
+        Expanded = False
+        FieldName = 'Total_Item'
+        Title.Caption = 'TOTAL R$'
+        Title.Color = cl3DLight
+        Title.Font.Charset = ANSI_CHARSET
+        Title.Font.Color = clWindowText
+        Title.Font.Height = -11
+        Title.Font.Name = 'Tahoma'
+        Title.Font.Style = [fsBold]
+        Width = 95
+        Visible = True
+      end>
+  end
+  object cdsitensVendas: TClientDataSet
+    Aggregates = <>
+    AggregatesActive = True
+    Params = <>
+    Left = 929
+    Top = 248
+    object cdsitensVendascod: TIntegerField
+      FieldName = 'cod'
+    end
+    object cdsitensVendasdescricao: TStringField
+      FieldName = 'descricao'
+      Size = 100
+    end
+    object cdsitensVendasqtd: TCurrencyField
+      FieldName = 'qtd'
+      DisplayFormat = ' ,0.000;- ,0.000'
+    end
+    object cdsitensVendasvl_item: TCurrencyField
+      FieldName = 'vl_item'
+      DisplayFormat = ' ,0.00;- ,0.00'
+    end
+    object cdsitensVendasTotal_Item: TCurrencyField
+      FieldName = 'Total_Item'
+      DisplayFormat = ' ,0.00;- ,0.00'
+    end
+    object cdsitensVendascodBarra: TStringField
+      FieldName = 'codBarra'
+      Size = 50
+    end
+    object cdsitensVendasvl_unitario: TCurrencyField
+      FieldName = 'vl_unitario'
+      DisplayFormat = ' ,0.00;- ,0.00'
+    end
+    object cdsitensVendasTotal: TAggregateField
+      FieldName = 'Total'
+      Active = True
+      currency = True
+      DisplayName = ''
+      DisplayFormat = 'R$ ,0.00;-R$ ,0.00'
+      Expression = 'SUM(TOTAL_ITEM)'
+    end
+  end
+  object cds_itensVendas: TDataSource
+    DataSet = cdsitensVendas
+    Left = 1009
+    Top = 248
   end
 end
