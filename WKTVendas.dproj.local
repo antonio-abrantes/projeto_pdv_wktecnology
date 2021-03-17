@@ -10,9 +10,12 @@
     <Transaction>2021/03/15 21:27:48.000.396,E:\Projetos\WKTecnology_Vendas\fontes\UPrincipal.pas=C:\Users\Antonio\Documents\Embarcadero\Studio\Projects\Unit1.pas</Transaction>
     <Transaction>2021/03/15 21:27:48.000.396,E:\Projetos\WKTecnology_Vendas\fontes\UPrincipal.dfm=C:\Users\Antonio\Documents\Embarcadero\Studio\Projects\Unit1.dfm</Transaction>
     <Transaction>2021/03/15 21:28:21.000.976,E:\Projetos\WKTecnology_Vendas\WKTVendas.dproj=C:\Users\Antonio\Documents\Embarcadero\Studio\Projects\Project1.dproj</Transaction>
-    <Transaction>2021/03/16 20:28:52.314,=E:\Projetos\WKTecnology_Vendas\Unit1.pas</Transaction>
-    <Transaction>2021/03/16 20:29:22.842,E:\Projetos\WKTecnology_Vendas\fontes\UDm.dfm=E:\Projetos\WKTecnology_Vendas\Unit1.dfm</Transaction>
-    <Transaction>2021/03/16 20:29:22.842,E:\Projetos\WKTecnology_Vendas\fontes\UDm.pas=E:\Projetos\WKTecnology_Vendas\Unit1.pas</Transaction>
+    <Transaction>2021/03/16 20:28:52.000.314,=E:\Projetos\WKTecnology_Vendas\Unit1.pas</Transaction>
+    <Transaction>2021/03/16 20:29:22.000.842,E:\Projetos\WKTecnology_Vendas\fontes\UDm.dfm=E:\Projetos\WKTecnology_Vendas\Unit1.dfm</Transaction>
+    <Transaction>2021/03/16 20:29:22.000.842,E:\Projetos\WKTecnology_Vendas\fontes\UDm.pas=E:\Projetos\WKTecnology_Vendas\Unit1.pas</Transaction>
+    <Transaction>2021/03/17 16:01:20.000.970,=E:\Projetos\WKTecnology_Vendas\Unit1.pas</Transaction>
+    <Transaction>2021/03/17 16:20:47.000.996,E:\Projetos\WKTecnology_Vendas\Unit1.pas=E:\Projetos\WKTecnology_Vendas\fontes\UItemPedido.pas</Transaction>
+    <Transaction>2021/03/17 17:49:23.142,=E:\Projetos\WKTecnology_Vendas\fontes\UPedido.pas</Transaction>
   </Transactions>
 	<ActiveMobileDevice>
 		<NoProfile iOSSimulator="iPhone5"/>

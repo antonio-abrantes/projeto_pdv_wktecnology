@@ -1,4 +1,4 @@
-object DataModule1: TDataModule1
+object DmDados: TDmDados
   OldCreateOrder = False
   Height = 533
   Width = 695
@@ -8,6 +8,10 @@ object DataModule1: TDataModule1
       'Server=localhost'
       'Database=wktec_dados'
       'DriverID=MySQL')
+    TxOptions.Params.Strings = (
+      'read_committed'
+      'rec_version'
+      'nowait')
     Connected = True
     LoginPrompt = False
     Left = 576
@@ -29,6 +33,7 @@ object DataModule1: TDataModule1
       FieldName = 'codigo'
       Origin = 'codigo'
       ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
     end
     object tb_clientesnome: TStringField
       FieldName = 'nome'
@@ -89,5 +94,14 @@ object DataModule1: TDataModule1
     DataSet = tb_pedidos_produtos
     Left = 176
     Top = 256
+  end
+  object FDTransaction1: TFDTransaction
+    Options.Params.Strings = (
+      'read_committed'
+      'rec_version'
+      'nowait')
+    Connection = Conexao
+    Left = 608
+    Top = 72
   end
 end

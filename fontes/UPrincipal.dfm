@@ -13,6 +13,7 @@ object frmPrincipal: TfrmPrincipal
   Font.Style = []
   OldCreateOrder = False
   Position = poMainFormCenter
+  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object Shape1: TShape
@@ -117,6 +118,7 @@ object frmPrincipal: TfrmPrincipal
       FDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFDFD
       FDFDFDFDFDFDFDFDFDFD}
     ParentFont = False
+    OnClick = btnIniciarVendaClick
   end
   object btnFinalizarVenda: TSpeedButton
     Left = 880
@@ -124,7 +126,7 @@ object frmPrincipal: TfrmPrincipal
     Width = 201
     Height = 43
     Cursor = crHandPoint
-    Caption = 'F4 - FINALIZAR VENDA'
+    Caption = 'F5 - FINALIZAR VENDA'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = 14774528
     Font.Height = -13
@@ -209,9 +211,10 @@ object frmPrincipal: TfrmPrincipal
       CBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCBCB
       CBCBCBCBCBCBCBCBCBCB}
     ParentFont = False
+    OnClick = btnFinalizarVendaClick
   end
   object btnCancelarVenda: TSpeedButton
-    Left = 725
+    Left = 701
     Top = 8
     Width = 201
     Height = 43
@@ -536,6 +539,7 @@ object frmPrincipal: TfrmPrincipal
       0303030303030303030303030303030303030301010101010103030303030303
       03030303030303030303}
     ParentFont = False
+    OnClick = btnAdicionarProdutoClick
   end
   object Shape11: TShape
     Left = 256
@@ -582,9 +586,9 @@ object frmPrincipal: TfrmPrincipal
   object Label9: TLabel
     Left = 40
     Top = 237
-    Width = 90
+    Width = 95
     Height = 13
-    Caption = 'F3 - Buscar Cliente'
+    Caption = 'F3 - Buscar Produto'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = 9783808
     Font.Height = -11
@@ -613,13 +617,12 @@ object frmPrincipal: TfrmPrincipal
     Font.Style = []
     ParentFont = False
   end
-  object Label11: TLabel
-    Left = 494
+  object lbProduto: TLabel
+    Left = 58
     Top = 168
-    Width = 137
+    Width = 13
     Height = 48
     Alignment = taCenter
-    Caption = 'Produto'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWhite
     Font.Height = -40
@@ -636,10 +639,10 @@ object frmPrincipal: TfrmPrincipal
     Pen.Color = clWhite
     Shape = stRoundRect
   end
-  object Label12: TLabel
-    Left = 496
-    Top = 693
-    Width = 567
+  object lbTotalPedido: TLabel
+    Left = 989
+    Top = 694
+    Width = 78
     Height = 48
     Alignment = taRightJustify
     Caption = '0,00'
@@ -677,7 +680,7 @@ object frmPrincipal: TfrmPrincipal
     ParentFont = False
     Transparent = True
   end
-  object Edit1: TEdit
+  object editCodCliente: TEdit
     Left = 48
     Top = 114
     Width = 217
@@ -691,11 +694,12 @@ object frmPrincipal: TfrmPrincipal
     ParentFont = False
     TabOrder = 0
     TextHint = 'C'#243'digo cliente'
+    OnChange = editCodClienteChange
   end
-  object Edit2: TEdit
+  object editNomeCliente: TEdit
     Left = 312
     Top = 114
-    Width = 751
+    Width = 755
     Height = 23
     BorderStyle = bsNone
     Font.Charset = DEFAULT_CHARSET
@@ -707,7 +711,7 @@ object frmPrincipal: TfrmPrincipal
     TabOrder = 1
     TextHint = 'Nome'
   end
-  object Edit3: TEdit
+  object editCodProduto: TEdit
     Left = 50
     Top = 284
     Width = 375
@@ -721,8 +725,9 @@ object frmPrincipal: TfrmPrincipal
     ParentFont = False
     TabOrder = 2
     TextHint = 'C'#243'digo produto'
+    OnChange = editCodProdutoChange
   end
-  object SpinEdit1: TSpinEdit
+  object spnQuantidade: TSpinEdit
     Left = 50
     Top = 351
     Width = 159
@@ -737,12 +742,14 @@ object frmPrincipal: TfrmPrincipal
     ParentFont = False
     TabOrder = 3
     Value = 0
+    OnChange = spnQuantidadeChange
   end
-  object Edit4: TEdit
+  object editPrecoUnitario: TEdit
     Left = 265
     Top = 356
     Width = 160
     Height = 23
+    Alignment = taRightJustify
     BorderStyle = bsNone
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
@@ -752,11 +759,12 @@ object frmPrincipal: TfrmPrincipal
     ParentFont = False
     TabOrder = 4
   end
-  object Edit5: TEdit
+  object editPrecoTotalItem: TEdit
     Left = 48
     Top = 428
     Width = 174
     Height = 22
+    Alignment = taRightJustify
     BorderStyle = bsNone
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
@@ -764,6 +772,7 @@ object frmPrincipal: TfrmPrincipal
     Font.Name = 'Tahoma'
     Font.Style = []
     ParentFont = False
+    ReadOnly = True
     TabOrder = 5
   end
   object grdVendas: TDBGrid
@@ -801,6 +810,7 @@ object frmPrincipal: TfrmPrincipal
         Title.Font.Height = -11
         Title.Font.Name = 'Tahoma'
         Title.Font.Style = [fsBold]
+        Width = 64
         Visible = True
       end
       item
@@ -877,9 +887,8 @@ object frmPrincipal: TfrmPrincipal
       FieldName = 'descricao'
       Size = 100
     end
-    object cdsitensVendasqtd: TCurrencyField
+    object cdsitensVendasqtd: TIntegerField
       FieldName = 'qtd'
-      DisplayFormat = ' ,0.000;- ,0.000'
     end
     object cdsitensVendasvl_item: TCurrencyField
       FieldName = 'vl_item'
@@ -888,10 +897,6 @@ object frmPrincipal: TfrmPrincipal
     object cdsitensVendasTotal_Item: TCurrencyField
       FieldName = 'Total_Item'
       DisplayFormat = ' ,0.00;- ,0.00'
-    end
-    object cdsitensVendascodBarra: TStringField
-      FieldName = 'codBarra'
-      Size = 50
     end
     object cdsitensVendasvl_unitario: TCurrencyField
       FieldName = 'vl_unitario'
@@ -910,5 +915,148 @@ object frmPrincipal: TfrmPrincipal
     DataSet = cdsitensVendas
     Left = 1009
     Top = 248
+  end
+  object QProdutos: TFDQuery
+    Connection = DmDados.Conexao
+    SQL.Strings = (
+      'SELECT '
+      '  PRODUTOS.CODIGO,'
+      '  PRODUTOS.DESCRICAO,'
+      '  PRODUTOS.PRECO_VENDA'
+      'FROM'
+      '  PRODUTOS'
+      'WHERE'
+      '  PRODUTOS.CODIGO = :cod')
+    Left = 200
+    Top = 264
+    ParamData = <
+      item
+        Name = 'COD'
+        ParamType = ptInput
+      end>
+    object QProdutosCODIGO: TFDAutoIncField
+      FieldName = 'CODIGO'
+      Origin = 'codigo'
+      ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
+    end
+    object QProdutosDESCRICAO: TStringField
+      FieldName = 'DESCRICAO'
+      Origin = 'descricao'
+      Required = True
+      Size = 255
+    end
+    object QProdutosPRECO_VENDA: TBCDField
+      AutoGenerateValue = arDefault
+      FieldName = 'PRECO_VENDA'
+      Origin = 'preco_venda'
+      Precision = 9
+      Size = 2
+    end
+  end
+  object QClientes: TFDQuery
+    Connection = DmDados.Conexao
+    SQL.Strings = (
+      'SELECT '
+      '  CLIENTES.CODIGO,'
+      '  CLIENTES.NOME,'
+      '  CLIENTES.CIDADE,'
+      '  CLIENTES.UF'
+      'FROM'
+      '  CLIENTES'
+      'WHERE'
+      '  CLIENTES.CODIGO = :cod')
+    Left = 208
+    Top = 88
+    ParamData = <
+      item
+        Name = 'COD'
+        ParamType = ptInput
+      end>
+    object QClientesCODIGO: TFDAutoIncField
+      FieldName = 'CODIGO'
+      Origin = 'codigo'
+      ProviderFlags = [pfInWhere, pfInKey]
+      ReadOnly = True
+    end
+    object QClientesNOME: TStringField
+      FieldName = 'NOME'
+      Origin = 'nome'
+      Required = True
+      Size = 255
+    end
+    object QClientesCIDADE: TStringField
+      FieldName = 'CIDADE'
+      Origin = 'cidade'
+      Required = True
+      Size = 255
+    end
+    object QClientesUF: TStringField
+      FieldName = 'UF'
+      Origin = 'uf'
+      Required = True
+      Size = 2
+    end
+  end
+  object QFechaPedido: TFDQuery
+    Transaction = DmDados.FDTransaction1
+    SQL.Strings = (
+      'INSERT INTO pedidos_dados_gerais('#10#9#10'    '
+      ' DATA_EMISSAO,'#10'    '
+      ' CODIGO_CLIENTE,'#10'    '
+      ' VLR_TOTAL'
+      #10') VALUES (now(),:2,:3)')
+    Left = 936
+    Top = 608
+    ParamData = <
+      item
+        Name = '2'
+        ParamType = ptInput
+      end
+      item
+        Name = '3'
+        ParamType = ptInput
+      end>
+  end
+  object QItemVenda: TFDQuery
+    Connection = DmDados.Conexao
+    Transaction = DmDados.FDTransaction1
+    SQL.Strings = (
+      'INSERT INTO pedidos_produtos('#10
+      ' NUM_PEDIDO,'#10'    '
+      ' CODIGO_PRODUTO,'#10'    '
+      ' QUANTIDADE,'#10'    '
+      ' VLR_UNITARIO,'#10'    '
+      ' VLR_TOTAL'#10
+      ')VALUES (:1,:2,:3,:4,:5)')
+    Left = 1024
+    Top = 608
+    ParamData = <
+      item
+        Name = '1'
+        ParamType = ptInput
+      end
+      item
+        Name = '2'
+        ParamType = ptInput
+      end
+      item
+        Name = '3'
+        ParamType = ptInput
+      end
+      item
+        Name = '4'
+        ParamType = ptInput
+      end
+      item
+        Name = '5'
+        ParamType = ptInput
+      end>
+  end
+  object QGeraPedido: TFDQuery
+    Connection = DmDados.Conexao
+    Transaction = DmDados.FDTransaction1
+    Left = 432
+    Top = 8
   end
 end

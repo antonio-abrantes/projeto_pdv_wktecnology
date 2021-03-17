@@ -11,7 +11,7 @@ uses
   FireDAC.Comp.Client;
 
 type
-  TDataModule1 = class(TDataModule)
+  TDmDados = class(TDataModule)
     Conexao: TFDConnection;
     DriverMySQL: TFDPhysMySQLDriverLink;
     tb_clientes: TFDTable;
@@ -26,6 +26,7 @@ type
     Dts_produtos: TDataSource;
     Dts_pedidos_dados_gerais: TDataSource;
     Dts_pedidos_produtos: TDataSource;
+    FDTransaction1: TFDTransaction;
   private
     { Private declarations }
   public
@@ -33,7 +34,7 @@ type
   end;
 
 var
-  DataModule1: TDataModule1;
+  DmDados: TDmDados;
 
 implementation
 
