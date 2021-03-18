@@ -346,8 +346,6 @@ begin
     if MessageDlg('Deseja excluir o registro?', mtConfirmation, mbYesNo, 0) = mrYes then
     begin
         cds_itensVendas.DataSet.Delete;
-        cdsitensVendas.ApplyUpdates(0);
-        cds_itensVendas.DataSet.Open;
     end;
   end;
 end;
