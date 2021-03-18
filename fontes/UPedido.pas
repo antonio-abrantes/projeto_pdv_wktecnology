@@ -2,6 +2,9 @@ unit UPedido;
 
 interface
 
+uses
+  System.SysUtils;
+
 type TPedido = class
 
 private
@@ -22,5 +25,9 @@ Public
 end;
 
 implementation
+
+{ TPedido }
+
+{ TPedido }
 
 end.

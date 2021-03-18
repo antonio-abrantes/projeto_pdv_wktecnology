@@ -305,6 +305,7 @@ object frmPrincipal: TfrmPrincipal
       FEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFEFE
       FEFEFEFEFEFEFEFEFEFE}
     ParentFont = False
+    OnClick = btnCancelarVendaClick
   end
   object Shape2: TShape
     Left = 40
@@ -653,7 +654,7 @@ object frmPrincipal: TfrmPrincipal
     Font.Style = []
     ParentFont = False
   end
-  object Shape14: TShape
+  object shapeSatatusCaixa: TShape
     Left = 40
     Top = 659
     Width = 393
@@ -679,6 +680,32 @@ object frmPrincipal: TfrmPrincipal
     ParentColor = False
     ParentFont = False
     Transparent = True
+  end
+  object Label11: TLabel
+    Left = 134
+    Top = 586
+    Width = 88
+    Height = 19
+    Caption = 'Pedido N'#186':  '
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = 14774528
+    Font.Height = -16
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
+  end
+  object lbPedido: TLabel
+    Left = 219
+    Top = 586
+    Width = 54
+    Height = 19
+    Caption = '000000'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = 14774528
+    Font.Height = -16
+    Font.Name = 'Tahoma'
+    Font.Style = []
+    ParentFont = False
   end
   object editCodCliente: TEdit
     Left = 48
@@ -798,6 +825,9 @@ object frmPrincipal: TfrmPrincipal
     TitleFont.Height = -13
     TitleFont.Name = 'Tahoma'
     TitleFont.Style = [fsBold]
+    OnColEnter = grdVendasColEnter
+    OnKeyDown = grdVendasKeyDown
+    OnKeyUp = grdVendasKeyUp
     Columns = <
       item
         Alignment = taLeftJustify
@@ -999,16 +1029,22 @@ object frmPrincipal: TfrmPrincipal
     end
   end
   object QFechaPedido: TFDQuery
+    Connection = DmDados.Conexao
     Transaction = DmDados.FDTransaction1
     SQL.Strings = (
-      'INSERT INTO pedidos_dados_gerais('#10#9#10'    '
+      'INSERT INTO pedidos_dados_gerais('#10
+      ' NUM_PEDIDO,'#9#10'    '
       ' DATA_EMISSAO,'#10'    '
       ' CODIGO_CLIENTE,'#10'    '
-      ' VLR_TOTAL'
-      #10') VALUES (now(),:2,:3)')
+      ' VALOR_TOTAL'
+      #10') VALUES (:1,now(),:2,:3)')
     Left = 936
     Top = 608
     ParamData = <
+      item
+        Name = '1'
+        ParamType = ptInput
+      end
       item
         Name = '2'
         ParamType = ptInput
@@ -1056,7 +1092,16 @@ object frmPrincipal: TfrmPrincipal
   object QGeraPedido: TFDQuery
     Connection = DmDados.Conexao
     Transaction = DmDados.FDTransaction1
+    SQL.Strings = (
+      'SELECT COUNT(*) FROM pedidos_dados_gerais;')
     Left = 432
     Top = 8
+    object QGeraPedidoCOUNT: TLargeintField
+      AutoGenerateValue = arDefault
+      FieldName = 'COUNT(*)'
+      Origin = '`COUNT(*)`'
+      ProviderFlags = []
+      ReadOnly = True
+    end
   end
 end
