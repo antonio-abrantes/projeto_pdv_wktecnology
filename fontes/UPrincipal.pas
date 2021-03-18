@@ -339,13 +339,24 @@ procedure TfrmPrincipal.grdVendasKeyDown(Sender: TObject; var Key: Word;
 var
  i: Integer;
 begin
-  if key = vk_delete then
+  if (key = vk_delete) and (cdsitensVendas.RecordCount > 0) then
   begin
   if cdsitensVendas.State in [dsBrowse] then
   begin
     if MessageDlg('Deseja excluir o registro?', mtConfirmation, mbYesNo, 0) = mrYes then
     begin
+
         cds_itensVendas.DataSet.Delete;
+
+        if (cdsitensVendas.RecordCount <> 0) then
+        begin
+
+          lbTotalPedido.Caption := FormatFloat( '##,###,##0.00', cdsitensVendasTotal.Value);
+        end else
+        begin
+            FormatFloat('##,###,##0.00', 0);
+        end;
+        LimpaCampos;
     end;
   end;
 end;
