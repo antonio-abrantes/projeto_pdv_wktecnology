@@ -96,6 +96,8 @@ type
     procedure LimpaCampos;
     procedure SetaCamposDBGrid;
     procedure AtualizaTotalItem;
+    procedure limpaDataSetPedido;
+    procedure GeraCodigoPedido;
     function ValidaCampos: Boolean;
     function IncluiItemVenda(ItemPedido : TItemPedido): Boolean;
 
@@ -129,8 +131,6 @@ begin
         ParamByName('3').Value := cdsitensVendasTotal.Value;
         ExecSQL;
 
-//        DmDados.FDTransaction1.CommitRetaining;
-
         cdsitensVendas.First;
 
         while not cdsitensVendas.Eof do
@@ -147,13 +147,17 @@ begin
         end;
       end;
 
+      limpaDataSetPedido;
+
       DesabilitaCampos;
 
       lbStatusCaixa.Caption := 'CAIXA LIVRE';
       shapeSatatusCaixa.Brush.Color := $0000DD00;
+      lbPedido.Caption := '00000';
+      editCodCliente.Text := '';
+      editNomeCliente.Text := '';
       LimpaCampos;
 
-      cds_itensVendas.DataSet.Close;
       Application.MessageBox('Pedido realizado com sucesso!', 'Informação', mb_ok + MB_ICONINFORMATION);
    end else
    begin
@@ -177,8 +181,6 @@ begin
       ExecSQL;
     end;
 
-//    DmDados.FDTransaction1.CommitRetaining;
-
     Result := true;
   except
     on e: exception do
@@ -197,16 +199,8 @@ begin
 
   HabilitaCampos;
 
-  Pedido := TPedido.Create;
-  with QGeraPedido do
-  begin
-    Open;
-    FetchAll;
-
-    Pedido.NUM_PEDIDO :=  QGeraPedidoCount.Value + 1;
-
-    lbPedido.Caption := Format('%5.5d', [Pedido.NUM_PEDIDO]);
-  end;
+  FreeAndNil(Pedido);
+  GeraCodigoPedido;
 end;
 
 procedure TfrmPrincipal.btnAdicionarProdutoClick(Sender: TObject);
@@ -242,10 +236,14 @@ begin
   if MessageDlg('Deseja cancelar a venda?',mtConfirmation,[mbYes,mbNo],0)=mrYes
    then begin
       FreeAndNil(Pedido);
+      limpaDataSetPedido;
       btnFinalizarVenda.Enabled := False;
       lbStatusCaixa.Caption := 'CAIXA LIVRE';
       shapeSatatusCaixa.Brush.Color := $0000DD00;
       DesabilitaCampos;
+      lbPedido.Caption := '00000';
+      editCodCliente.Text := '';
+      editNomeCliente.Text := '';
       LimpaCampos;
    end;
 end;
@@ -315,6 +313,21 @@ begin
   DesabilitaCampos;
 end;
 
+procedure TfrmPrincipal.GeraCodigoPedido;
+begin
+  Pedido := TPedido.Create;
+  with QGeraPedido do
+  begin
+    Close;
+    Open;
+    FetchAll;
+
+    Pedido.NUM_PEDIDO :=  QGeraPedidoCount.Value + 1;
+
+    lbPedido.Caption := Format('%5.5d', [Pedido.NUM_PEDIDO]);
+  end;
+end;
+
 procedure TfrmPrincipal.grdVendasColEnter(Sender: TObject);
 begin
   SetaCamposDBGrid;
@@ -354,6 +367,8 @@ begin
   editCodProduto.Enabled := True;
   editPrecoUnitario.Enabled := True;
   editPrecoTotalItem.Enabled := True;
+  spnQuantidade.Enabled := True;
+  btnAdicionarProduto.Enabled := True;
   btnCancelarVenda.Enabled := True;
   btnFinalizarVenda.Enabled := True;
   btnIniciarVenda.Enabled := False;
@@ -399,7 +414,17 @@ begin
   editCodProduto.Text := '';
   editPrecoUnitario.Clear;
   editPrecoTotalItem.Clear;
-  lbPedido.Caption := '00000';
+end;
+
+procedure TfrmPrincipal.limpaDataSetPedido;
+begin
+    with cdsitensVendas do
+    begin
+      Open;
+      EmptyDataSet;
+      Close;
+    end;
+    cdsitensVendas.Open;
 end;
 
 procedure TfrmPrincipal.SetaCamposDBGrid;
